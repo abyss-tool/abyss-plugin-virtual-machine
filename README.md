@@ -51,3 +51,22 @@ Shizuku（ADB shell 上下文）拉起以绕过普通应用进程的 RLIMIT_MEML
 - [ ] v0.5 快照 / 挂起恢复与性能档位
 
 详见 [ROADMAP.md](ROADMAP.md)。
+
+---
+
+## ⚠️ 归档公告（2026-11-22 · ADR-100 D-4 / HUB-014）
+
+本仓库已**归档（只读）**：QEMU 整机能力收编为 **abyss-plugin-linux** 的
+`QEMU_VM` 执行域（完整系统 · 自带 Linux 内核 · TCG arm64 · qcow2 镜像 ·
+VNC 回环 · 快照）。
+
+- **能力去向**：`QEMU_VM 执行域 → [abyss-plugin-linux](https://github.com/abyss-tool/abyss-plugin-linux)`
+- **规格承接**：原 N-VM-001~005 由 `11-Linux插件解耦/LIN-002`（QEMU 完整
+  系统执行域）与 `LIN-003`（镜像资产管理）承接；原 DC-012 由
+  `11-Linux插件解耦/DC-102`（abyss-asset-v1）承接
+- **授权影响**：原「虚拟机单独 Shizuku 授权」取消 —— 收敛为 Linux 插件
+  **唯一一次授权**（PRoot/QEMU 引擎共用 uid 2000 上下文）
+- **补丁通道**：`patches/index.json` 保持现状不再滚动；旧版本用户可迁移
+  至 Linux 插件获取等价能力（含镜像市场模板与快照档位）
+- **纪律**：归档能力不得复活为插件（SRS-004 FR-005）；本仓库按
+  HUB-014 历史存档保留（不再接受变更与补丁）
